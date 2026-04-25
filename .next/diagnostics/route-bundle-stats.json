@@ -31,11 +31,11 @@
   },
   {
     "route": "/academy",
-    "firstLoadUncompressedJsBytes": 846420,
+    "firstLoadUncompressedJsBytes": 846541,
     "firstLoadChunkPaths": [
       ".next/static/chunks/01xlw8hd842-c.js",
       ".next/static/chunks/0d3shmwh5_nmn.js",
-      ".next/static/chunks/0j2trci5.ui~n.js",
+      ".next/static/chunks/09wdql~g56mdm.js",
       ".next/static/chunks/12z1cmdur~de..js",
       ".next/static/chunks/05tsy9pxtuyv0.js",
       ".next/static/chunks/0pqt~8bl3ukh4.js",

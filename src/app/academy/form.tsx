@@ -49,9 +49,23 @@ export function AcademyForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ type: "academy", data: values }),
       });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error ?? "Erreur lors de l'envoi");
-      router.push(`/signature/${json.id}`);
+      const text = await res.text();
+      let parsed: { id?: string; error?: string; detail?: string } | null = null;
+      try {
+        parsed = JSON.parse(text);
+      } catch {
+        // Non-JSON response — usually a 500 with HTML. Garde le brut.
+      }
+      if (!res.ok) {
+        const msg =
+          parsed?.error ??
+          parsed?.detail ??
+          text.slice(0, 200) ??
+          `Erreur ${res.status}`;
+        throw new Error(msg);
+      }
+      if (!parsed?.id) throw new Error("Réponse invalide du serveur");
+      router.push(`/signature/${parsed.id}`);
     } catch (e) {
       setServerError(e instanceof Error ? e.message : "Erreur inconnue");
       setSubmitting(false);

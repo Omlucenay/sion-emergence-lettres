@@ -43,15 +43,23 @@ export async function POST(req: Request) {
   const email =
     "email" in data ? (data as { email: string }).email : "";
 
-  const submission = await prisma.submission.create({
-    data: {
-      type: finalType,
-      formData: JSON.stringify(data),
-      signerEmail: email,
-      acceptRgpd: Boolean((data as { acceptRgpd?: boolean }).acceptRgpd),
-      acceptTerms: Boolean((data as { acceptTerms?: boolean }).acceptTerms),
-    },
-  });
-
-  return NextResponse.json({ id: submission.id });
+  try {
+    const submission = await prisma.submission.create({
+      data: {
+        type: finalType,
+        formData: JSON.stringify(data),
+        signerEmail: email,
+        acceptRgpd: Boolean((data as { acceptRgpd?: boolean }).acceptRgpd),
+        acceptTerms: Boolean((data as { acceptTerms?: boolean }).acceptTerms),
+      },
+    });
+    return NextResponse.json({ id: submission.id });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("[/api/submit] Échec Prisma :", err);
+    return NextResponse.json(
+      { error: "Erreur base de données", detail: message.slice(0, 500) },
+      { status: 500 },
+    );
+  }
 }
