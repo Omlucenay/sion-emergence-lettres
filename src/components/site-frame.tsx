@@ -13,7 +13,7 @@ export function SiteFrame({
     <div className="flex flex-col flex-1 min-h-screen">
       <header className="border-b border-[#E8E2D8] bg-white/60">
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
+          <a href="https://sion-emergence.fr" className="flex items-center gap-3">
             <Image
               src="/logo-sion-emergence.png"
               alt="Sion Émergence"
@@ -25,7 +25,7 @@ export function SiteFrame({
             <span className="hidden md:inline text-[10px] uppercase tracking-[0.22em] text-[var(--muted)]">
               Tiers-lieu éducatif & communautaire
             </span>
-          </Link>
+          </a>
           {withBackLink ? (
             <Link
               href="/"

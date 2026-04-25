@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { submissionStore } from "@/lib/store";
 import { SiteFrame } from "@/components/site-frame";
 import { submissionTypeLabels, type SubmissionType } from "@/lib/schemas";
-import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -52,9 +51,9 @@ export default async function ConfirmationPage({
           <a href={`/api/pdf/${submission.id}`} target="_blank" rel="noreferrer" className="btn">
             Télécharger la lettre signée
           </a>
-          <Link href="/" className="btn btn-secondary">
+          <a href="https://sion-emergence.fr" className="btn btn-secondary">
             Retour à l&apos;accueil
-          </Link>
+          </a>
         </div>
 
         <p className="mt-10 text-xs text-[var(--muted)] leading-relaxed">
