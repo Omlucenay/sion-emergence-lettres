@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { prisma } from "@/lib/db";
+import { submissionStore } from "@/lib/store";
 import { SiteFrame } from "@/components/site-frame";
 import { SignatureClient } from "./signature-client";
 import { submissionTypeLabels, fullName, type SubmissionType } from "@/lib/schemas";
@@ -12,7 +12,7 @@ export default async function SignaturePage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const submission = await prisma.submission.findUnique({ where: { id } });
+  const submission = await submissionStore.findUnique(id);
   if (!submission) notFound();
 
   const data = JSON.parse(submission.formData) as Record<string, unknown>;

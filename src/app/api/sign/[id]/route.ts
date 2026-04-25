@@ -3,7 +3,7 @@ import { z } from "zod";
 import crypto from "node:crypto";
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { prisma } from "@/lib/db";
+import { submissionStore } from "@/lib/store";
 import { renderSubmissionPdf } from "@/lib/pdf/render";
 import { sendMail } from "@/lib/email";
 import type {
@@ -38,7 +38,7 @@ export async function POST(
     return NextResponse.json({ error: "Données invalides" }, { status: 422 });
   }
 
-  const submission = await prisma.submission.findUnique({ where: { id } });
+  const submission = await submissionStore.findUnique(id);
   if (!submission) {
     return NextResponse.json({ error: "Soumission introuvable" }, { status: 404 });
   }
@@ -77,18 +77,15 @@ export async function POST(
   const pdfPath = path.join(storageDir, `${submission.id}.pdf`);
   await fs.writeFile(pdfPath, pdf);
 
-  await prisma.submission.update({
-    where: { id: submission.id },
-    data: {
-      status: "signed",
-      signatureSvg: parsed.data.signatureSvg,
-      signatureName: parsed.data.signatureName,
-      signedAt: now,
-      signerIp: ip,
-      signerUa: ua,
-      pdfHash: hash,
-      pdfPath,
-    },
+  await submissionStore.update(submission.id, {
+    status: "signed",
+    signatureSvg: parsed.data.signatureSvg,
+    signatureName: parsed.data.signatureName,
+    signedAt: now.toISOString(),
+    signerIp: ip,
+    signerUa: ua,
+    pdfHash: hash,
+    pdfPath,
   });
 
   // Send emails
@@ -147,9 +144,9 @@ export async function POST(
         ],
       }),
     ]);
-    await prisma.submission.update({
-      where: { id: submission.id },
-      data: { status: "sent", emailSentAt: new Date() },
+    await submissionStore.update(submission.id, {
+      status: "sent",
+      emailSentAt: new Date().toISOString(),
     });
   } catch (e) {
     // Email send failure is non-fatal — submission is already marked signed

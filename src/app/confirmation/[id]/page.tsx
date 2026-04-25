@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { prisma } from "@/lib/db";
+import { submissionStore } from "@/lib/store";
 import { SiteFrame } from "@/components/site-frame";
 import { submissionTypeLabels, type SubmissionType } from "@/lib/schemas";
 import Link from "next/link";
@@ -12,7 +12,7 @@ export default async function ConfirmationPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const submission = await prisma.submission.findUnique({ where: { id } });
+  const submission = await submissionStore.findUnique(id);
   if (!submission) notFound();
 
   return (
@@ -40,7 +40,7 @@ export default async function ConfirmationPage({
           </div>
           <div>
             <dt className="label">Signée le</dt>
-            <dd>{submission.signedAt?.toLocaleString("fr-FR") ?? "—"}</dd>
+            <dd>{submission.signedAt ? new Date(submission.signedAt).toLocaleString("fr-FR") : "—"}</dd>
           </div>
           <div>
             <dt className="label">Empreinte SHA-256</dt>

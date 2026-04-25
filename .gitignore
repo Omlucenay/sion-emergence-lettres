@@ -45,9 +45,11 @@ yarn-error.log*
 /dev.db
 /dev.db-journal
 
-# PDF signés archivés localement — données utilisateurs, jamais sur git
+# Données utilisateurs (PDF signés + métadonnées JSON) — jamais sur git
 /storage/uploads/*
 !/storage/uploads/.gitkeep
+/storage/submissions/*
+!/storage/submissions/.gitkeep
 
 # typescript
 *.tsbuildinfo

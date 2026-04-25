@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { prisma } from "@/lib/db";
+import { submissionStore } from "@/lib/store";
 import { renderSubmissionPdf } from "@/lib/pdf/render";
 import type { AcademyData, JoyClubData, PartnerData, SubmissionType } from "@/lib/schemas";
 
@@ -16,7 +16,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
-  const submission = await prisma.submission.findUnique({ where: { id } });
+  const submission = await submissionStore.findUnique(id);
   if (!submission) return new NextResponse("Not found", { status: 404 });
   if (submission.status === "pending") {
     return new NextResponse("Lettre non signée", { status: 409 });
@@ -51,7 +51,7 @@ export async function GET(
     signatureDataUri: submission.signatureSvg
       ? svgToDataUri(submission.signatureSvg)
       : undefined,
-    signedAt: submission.signedAt?.toISOString().slice(0, 16).replace("T", " "),
+    signedAt: submission.signedAt?.slice(0, 16).replace("T", " "),
     ip: submission.signerIp ?? undefined,
     hash: submission.pdfHash ?? undefined,
   });

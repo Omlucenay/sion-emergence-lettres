@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { submissionStore } from "@/lib/store";
 import type {
   AcademyData,
   JoyClubData,
@@ -69,20 +69,18 @@ const HEADERS = [
 type Row = Partial<Record<(typeof HEADERS)[number], string>>;
 
 export async function GET() {
-  const submissions = await prisma.submission.findMany({
-    orderBy: { createdAt: "desc" },
-  });
+  const submissions = await submissionStore.findMany();
 
   const rows: Row[] = submissions.map((s) => {
     const data = JSON.parse(s.formData) as Record<string, unknown>;
     const type = s.type as SubmissionType;
     const row: Row = {
       id: s.id,
-      createdAt: s.createdAt.toISOString(),
+      createdAt: s.createdAt,
       type,
       status: s.status,
       signerEmail: s.signerEmail,
-      signedAt: s.signedAt?.toISOString() ?? "",
+      signedAt: s.signedAt ?? "",
       ip: s.signerIp ?? "",
       pdfHash: s.pdfHash ?? "",
       signedDate: (data.signedDate as string) ?? "",

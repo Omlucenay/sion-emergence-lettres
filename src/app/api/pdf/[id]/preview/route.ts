@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { submissionStore } from "@/lib/store";
 import { renderSubmissionPdf } from "@/lib/pdf/render";
 import type { SubmissionType, AcademyData, JoyClubData, PartnerData } from "@/lib/schemas";
 
@@ -11,7 +11,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
-  const submission = await prisma.submission.findUnique({ where: { id } });
+  const submission = await submissionStore.findUnique(id);
   if (!submission) return new NextResponse("Not found", { status: 404 });
 
   const data = JSON.parse(submission.formData) as

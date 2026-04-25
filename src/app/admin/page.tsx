@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/db";
+import { submissionStore } from "@/lib/store";
 import { SiteFrame } from "@/components/site-frame";
 import { submissionTypeLabels, fullName, type SubmissionType } from "@/lib/schemas";
 import Link from "next/link";
@@ -11,24 +11,11 @@ export default async function AdminPage({
   searchParams: Promise<{ type?: string }>;
 }) {
   const sp = await searchParams;
-  const where = sp.type ? { type: sp.type } : {};
 
-  const [submissions, counts] = await Promise.all([
-    prisma.submission.findMany({
-      where,
-      orderBy: { createdAt: "desc" },
-      take: 200,
-    }),
-    prisma.submission.groupBy({
-      by: ["type", "status"],
-      _count: { _all: true },
-    }),
+  const [submissions, totalByType] = await Promise.all([
+    submissionStore.findMany({ type: sp.type, limit: 200 }),
+    submissionStore.countByTypeAndStatus(),
   ]);
-
-  const totalByType: Record<string, number> = {};
-  for (const c of counts) {
-    totalByType[c.type] = (totalByType[c.type] ?? 0) + c._count._all;
-  }
 
   return (
     <SiteFrame>
@@ -84,7 +71,7 @@ export default async function AdminPage({
                 return (
                   <tr key={s.id} className="border-b border-[#F1ECE3] last:border-0">
                     <td className="py-3 pr-4 whitespace-nowrap text-[var(--muted)]">
-                      {s.createdAt.toLocaleDateString("fr-FR")}
+                      {new Date(s.createdAt).toLocaleDateString("fr-FR")}
                     </td>
                     <td className="py-3 pr-4">
                       <span className="text-xs uppercase tracking-[0.1em]">
