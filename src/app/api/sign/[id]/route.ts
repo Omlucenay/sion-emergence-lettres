@@ -72,7 +72,7 @@ export async function POST(
   const hash = crypto.createHash("sha256").update(pdf).digest("hex");
 
   // Persist to disk
-  const storageDir = path.resolve("storage/uploads");
+  const storageDir = path.resolve(process.cwd(), "storage/uploads");
   await fs.mkdir(storageDir, { recursive: true });
   const pdfPath = path.join(storageDir, `${submission.id}.pdf`);
   await fs.writeFile(pdfPath, pdf);

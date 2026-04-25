@@ -12,16 +12,30 @@ export default async function AdminPage({
 }) {
   const sp = await searchParams;
 
-  const [submissions, totalByType] = await Promise.all([
-    submissionStore.findMany({ type: sp.type, limit: 200 }),
-    submissionStore.countByTypeAndStatus(),
-  ]);
+  let submissions: Awaited<ReturnType<typeof submissionStore.findMany>> = [];
+  let totalByType: Record<string, number> = {};
+  let storeError: string | null = null;
+  try {
+    [submissions, totalByType] = await Promise.all([
+      submissionStore.findMany({ type: sp.type, limit: 200 }),
+      submissionStore.countByTypeAndStatus(),
+    ]);
+  } catch (err) {
+    storeError = err instanceof Error ? err.message : String(err);
+    console.error("[/admin] Échec lecture du stockage :", err);
+  }
 
   return (
     <SiteFrame>
       <div>
         <p className="text-xs uppercase tracking-[0.2em] text-[var(--accent)] mb-3">Admin</p>
         <h1 className="font-display text-4xl md:text-5xl mb-8">Lettres reçues</h1>
+
+        {storeError ? (
+          <div className="bg-red-50 border border-red-200 text-red-800 p-4 mb-6 text-sm">
+            <strong>Erreur stockage :</strong> {storeError}
+          </div>
+        ) : null}
 
         <div className="flex flex-wrap gap-2 mb-8 text-xs">
           <FilterChip href="/admin" label="Toutes" current={!sp.type} />

@@ -26,7 +26,18 @@ export type SubmissionRow = {
   updatedAt: string;
 };
 
-const STORAGE_DIR = path.resolve("storage/submissions");
+// Résout le dossier de stockage depuis l'env var STORAGE_DIR si défini,
+// sinon depuis le répertoire de travail. On évite path.resolve() qui dépend
+// du CWD au moment de l'exécution (Passenger ne lance pas forcément depuis
+// la racine du projet).
+function resolveStorageDir(): string {
+  if (process.env.STORAGE_DIR) {
+    return path.resolve(process.env.STORAGE_DIR);
+  }
+  return path.resolve(process.cwd(), "storage/submissions");
+}
+
+const STORAGE_DIR = resolveStorageDir();
 
 async function ensureDir(): Promise<void> {
   await fs.mkdir(STORAGE_DIR, { recursive: true });
