@@ -170,7 +170,23 @@ const config = {
       },
       {
         "fromEnvVar": null,
+        "value": "debian-openssl-1.1.x"
+      },
+      {
+        "fromEnvVar": null,
         "value": "rhel-openssl-3.0.x"
+      },
+      {
+        "fromEnvVar": null,
+        "value": "rhel-openssl-1.1.x"
+      },
+      {
+        "fromEnvVar": null,
+        "value": "linux-musl-openssl-3.0.x"
+      },
+      {
+        "fromEnvVar": null,
+        "value": "linux-musl"
       }
     ],
     "previewFeatures": [],
@@ -178,7 +194,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
+    "rootEnvPath": "../../../.env",
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",
@@ -197,8 +213,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// Prisma schema — Sion Émergence — Lettres d'intention\n// Provider: MySQL (o2switch). Pour repasser en SQLite pour un dev local,\n// changer provider=\"sqlite\" + DATABASE_URL=\"file:./dev.db\" et lancer\n// `npx prisma db push`.\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  // Sortie dans le repo (commitée) — évite de relancer \"prisma generate\"\n  // sur o2switch où WebAssembly épuise la mémoire.\n  output        = \"../src/generated/prisma\"\n  // Binaires : \"native\" pour le dev local, \"debian-openssl-3.0.x\" pour o2switch.\n  binaryTargets = [\"native\", \"debian-openssl-3.0.x\", \"rhel-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Submission {\n  id     String @id @default(cuid())\n  type   String @db.VarChar(40)\n  status String @default(\"pending\") @db.VarChar(20)\n\n  // Données du formulaire (JSON sérialisé) — peut être long\n  formData String @db.Text\n\n  // Signature électronique\n  signatureSvg  String?   @db.MediumText\n  signatureName String?   @db.VarChar(120)\n  signedAt      DateTime?\n  signerIp      String?   @db.VarChar(64)\n  signerUa      String?   @db.VarChar(500)\n  pdfHash       String?   @db.VarChar(64)\n  pdfPath       String?   @db.VarChar(500)\n\n  acceptRgpd  Boolean @default(false)\n  acceptTerms Boolean @default(false)\n\n  signerEmail String    @db.VarChar(180)\n  emailSentAt DateTime?\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@index([type])\n  @@index([status])\n  @@index([createdAt])\n}\n",
-  "inlineSchemaHash": "e6601db5422728c085db6750d3e8631e03ad4fb68f26308d1a017585270c9fb9",
+  "inlineSchema": "// Prisma schema — Sion Émergence — Lettres d'intention\n// Provider: MySQL (o2switch). Pour repasser en SQLite pour un dev local,\n// changer provider=\"sqlite\" + DATABASE_URL=\"file:./dev.db\" et lancer\n// `npx prisma db push`.\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  // Sortie dans le repo (commitée) — évite de relancer \"prisma generate\"\n  // sur o2switch où WebAssembly épuise la mémoire.\n  output        = \"../src/generated/prisma\"\n  // Tous les binaires Linux courants — o2switch peut être sur OpenSSL 1.1 ou 3.0.\n  binaryTargets = [\"native\", \"debian-openssl-3.0.x\", \"debian-openssl-1.1.x\", \"rhel-openssl-3.0.x\", \"rhel-openssl-1.1.x\", \"linux-musl-openssl-3.0.x\", \"linux-musl\"]\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Submission {\n  id     String @id @default(cuid())\n  type   String @db.VarChar(40)\n  status String @default(\"pending\") @db.VarChar(20)\n\n  // Données du formulaire (JSON sérialisé) — peut être long\n  formData String @db.Text\n\n  // Signature électronique\n  signatureSvg  String?   @db.MediumText\n  signatureName String?   @db.VarChar(120)\n  signedAt      DateTime?\n  signerIp      String?   @db.VarChar(64)\n  signerUa      String?   @db.VarChar(500)\n  pdfHash       String?   @db.VarChar(64)\n  pdfPath       String?   @db.VarChar(500)\n\n  acceptRgpd  Boolean @default(false)\n  acceptTerms Boolean @default(false)\n\n  signerEmail String    @db.VarChar(180)\n  emailSentAt DateTime?\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@index([type])\n  @@index([status])\n  @@index([createdAt])\n}\n",
+  "inlineSchemaHash": "f94fcbc1cd7ba3791c4c36fd706e36fded99df2d68b50f3859b69c5667abef13",
   "copyEngine": true
 }
 config.dirname = '/'

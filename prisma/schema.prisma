@@ -8,8 +8,8 @@ generator client {
   // Sortie dans le repo (commitée) — évite de relancer "prisma generate"
   // sur o2switch où WebAssembly épuise la mémoire.
   output        = "../src/generated/prisma"
-  // Binaires : "native" pour le dev local, "debian-openssl-3.0.x" pour o2switch.
-  binaryTargets = ["native", "debian-openssl-3.0.x", "rhel-openssl-3.0.x"]
+  // Tous les binaires Linux courants — o2switch peut être sur OpenSSL 1.1 ou 3.0.
+  binaryTargets = ["native", "debian-openssl-3.0.x", "debian-openssl-1.1.x", "rhel-openssl-3.0.x", "rhel-openssl-1.1.x", "linux-musl-openssl-3.0.x", "linux-musl"]
 }
 
 datasource db {
