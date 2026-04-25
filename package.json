@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && next build",
     "deploy:db": "prisma db push --accept-data-loss --skip-generate"
   },
   "dependencies": {
