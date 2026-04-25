@@ -4,7 +4,12 @@
 // `npx prisma db push`.
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  // Sortie dans le repo (commitée) — évite de relancer "prisma generate"
+  // sur o2switch où WebAssembly épuise la mémoire.
+  output        = "../src/generated/prisma"
+  // Binaires : "native" pour le dev local, "debian-openssl-3.0.x" pour o2switch.
+  binaryTargets = ["native", "debian-openssl-3.0.x", "rhel-openssl-3.0.x"]
 }
 
 datasource db {

@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postinstall": "prisma generate",
+    "postinstall": "echo Skipping prisma generate on install — client is committed in src/generated/prisma",
     "deploy:db": "node deploy-db.js"
   },
   "dependencies": {
