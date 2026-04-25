@@ -36,6 +36,16 @@ yarn-error.log*
 # vercel
 .vercel
 
+# base de données locale (dev) — ne pas pousser, contient des données de test
+/prisma/*.db
+/prisma/*.db-journal
+/dev.db
+/dev.db-journal
+
+# PDF signés archivés localement — données utilisateurs, jamais sur git
+/storage/uploads/*
+!/storage/uploads/.gitkeep
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
