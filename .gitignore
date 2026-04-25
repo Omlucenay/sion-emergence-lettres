@@ -13,8 +13,11 @@
 # testing
 /coverage
 
-# next.js
-/.next/
+# next.js — on commit le build prod (déploiement o2switch sans build serveur),
+# mais on ignore le cache et les artefacts de dev qui sont énormes et inutiles en prod.
+/.next/cache/
+/.next/dev/
+/.next/trace
 /out/
 
 # production

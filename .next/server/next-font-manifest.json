@@ -1,0 +1,39 @@
+{
+  "app": {
+    "[project]/src/app/_not-found/page": [
+      "static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2",
+      "static/media/01e4147cff8141ee-s.p.10ked.7w885.g.woff2"
+    ],
+    "[project]/src/app/academy/page": [
+      "static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2",
+      "static/media/01e4147cff8141ee-s.p.10ked.7w885.g.woff2"
+    ],
+    "[project]/src/app/admin/page": [
+      "static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2",
+      "static/media/01e4147cff8141ee-s.p.10ked.7w885.g.woff2"
+    ],
+    "[project]/src/app/confirmation/[id]/page": [
+      "static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2",
+      "static/media/01e4147cff8141ee-s.p.10ked.7w885.g.woff2"
+    ],
+    "[project]/src/app/joy-club/page": [
+      "static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2",
+      "static/media/01e4147cff8141ee-s.p.10ked.7w885.g.woff2"
+    ],
+    "[project]/src/app/page": [
+      "static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2",
+      "static/media/01e4147cff8141ee-s.p.10ked.7w885.g.woff2"
+    ],
+    "[project]/src/app/partenaire/page": [
+      "static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2",
+      "static/media/01e4147cff8141ee-s.p.10ked.7w885.g.woff2"
+    ],
+    "[project]/src/app/signature/[id]/page": [
+      "static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2",
+      "static/media/01e4147cff8141ee-s.p.10ked.7w885.g.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

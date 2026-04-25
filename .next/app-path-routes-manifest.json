@@ -1,0 +1,17 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/academy/page": "/academy",
+  "/admin/page": "/admin",
+  "/api/admin/export.csv/route": "/api/admin/export.csv",
+  "/api/pdf/[id]/preview/route": "/api/pdf/[id]/preview",
+  "/api/pdf/[id]/route": "/api/pdf/[id]",
+  "/api/sign/[id]/route": "/api/sign/[id]",
+  "/api/submit/route": "/api/submit",
+  "/confirmation/[id]/page": "/confirmation/[id]",
+  "/favicon.ico/route": "/favicon.ico",
+  "/joy-club/page": "/joy-club",
+  "/page": "/",
+  "/partenaire/page": "/partenaire",
+  "/signature/[id]/page": "/signature/[id]"
+}

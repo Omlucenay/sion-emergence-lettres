@@ -1,0 +1,17 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/academy/page": "app/academy/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/api/admin/export.csv/route": "app/api/admin/export.csv/route.js",
+  "/api/pdf/[id]/preview/route": "app/api/pdf/[id]/preview/route.js",
+  "/api/pdf/[id]/route": "app/api/pdf/[id]/route.js",
+  "/api/sign/[id]/route": "app/api/sign/[id]/route.js",
+  "/api/submit/route": "app/api/submit/route.js",
+  "/confirmation/[id]/page": "app/confirmation/[id]/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/joy-club/page": "app/joy-club/page.js",
+  "/page": "app/page.js",
+  "/partenaire/page": "app/partenaire/page.js",
+  "/signature/[id]/page": "app/signature/[id]/page.js"
+}
