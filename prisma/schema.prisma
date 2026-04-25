@@ -1,39 +1,38 @@
 // Prisma schema — Sion Émergence — Lettres d'intention
-// Provider: SQLite en dev local, MySQL en prod (o2switch)
-// Pour passer en MySQL: changer provider="mysql" et DATABASE_URL=mysql://...
+// Provider: MySQL (o2switch). Pour repasser en SQLite pour un dev local,
+// changer provider="sqlite" + DATABASE_URL="file:./dev.db" et lancer
+// `npx prisma db push`.
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model Submission {
   id            String    @id @default(cuid())
-  type          String    // "academy" | "joy_club" | "partner_institutional" | "partner_professional" | "partner_economic"
-  status        String    @default("pending") // "pending" | "signed" | "sent"
+  type          String    @db.VarChar(40)
+  status        String    @default("pending") @db.VarChar(20)
 
-  // Données du formulaire (JSON sérialisé)
-  formData      String    // JSON
+  // Données du formulaire (JSON sérialisé) — peut être long
+  formData      String    @db.Text
 
   // Signature électronique
-  signatureSvg  String?   // SVG du tracé manuscrit
-  signatureName String?   // Nom du signataire confirmé
+  signatureSvg  String?   @db.MediumText
+  signatureName String?   @db.VarChar(120)
   signedAt      DateTime?
-  signerIp      String?
-  signerUa      String?   // user-agent
-  pdfHash       String?   // SHA-256 du PDF signé
-  pdfPath       String?   // Chemin du PDF archivé
+  signerIp      String?   @db.VarChar(64)
+  signerUa      String?   @db.VarChar(500)
+  pdfHash       String?   @db.VarChar(64)
+  pdfPath       String?   @db.VarChar(500)
 
-  // Consentements
   acceptRgpd    Boolean   @default(false)
   acceptTerms   Boolean   @default(false)
 
-  // Email
-  signerEmail   String
+  signerEmail   String    @db.VarChar(180)
   emailSentAt   DateTime?
 
   createdAt     DateTime  @default(now())

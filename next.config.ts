@@ -1,9 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Build standalone : nécessaire pour o2switch (Passenger / Application Node.js)
-  output: "standalone",
-  // PDF rendering uses Node fs/crypto — keep API routes on Node runtime (default)
+  // o2switch + Passenger : on lance Next.js via server.js (mode start standard)
+  // PDF rendering uses Node fs/crypto — API routes restent sur Node runtime (défaut)
 };
 
 export default nextConfig;
