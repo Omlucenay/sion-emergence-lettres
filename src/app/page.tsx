@@ -7,7 +7,7 @@ const choices = [
     eyebrow: "École primaire",
     title: "Sion Academy",
     description:
-      "Lettre d'intention d'inscription pour la rentrée inaugurale — septembre 2026.",
+      "Lettre d'intention d'inscription pour la rentrée inaugurale · septembre 2026.",
     audience: "Parents",
   },
   {
@@ -15,7 +15,7 @@ const choices = [
     eyebrow: "Périscolaire & loisirs",
     title: "Joy Club",
     description:
-      "Centre aéré, garderie du mercredi et soutien scolaire — ouverture septembre 2026.",
+      "Centre aéré, garderie du mercredi et soutien scolaire · ouverture septembre 2026.",
     audience: "Parents",
   },
   {
@@ -23,7 +23,7 @@ const choices = [
     eyebrow: "Soutien au projet",
     title: "Partenaire",
     description:
-      "Lettre de soutien — institutionnel, professionnel ou acteur économique local.",
+      "Lettre de soutien · institutionnel, professionnel ou acteur économique local.",
     audience: "Partenaires",
   },
 ];
@@ -41,7 +41,7 @@ export default function Home() {
         </h1>
         <p className="text-lg leading-relaxed text-[var(--muted)] max-w-xl mb-12">
           Sion Émergence est un tiers-lieu éducatif et communautaire en construction. Choisissez
-          ci-dessous le type de lettre qui vous concerne — vous remplissez les champs, signez
+          ci-dessous le type de lettre qui vous concerne, remplissez les champs, signez
           en ligne et nous recevons l&apos;original.
         </p>
       </section>
@@ -77,7 +77,7 @@ export default function Home() {
           <li>Vous signez directement à l&apos;écran (souris, doigt ou stylet).</li>
           <li>
             Vous recevez votre lettre signée par email. Une copie nous est transmise
-            automatiquement à <span className="text-[var(--ink)]">om.lucenay@gmail.com</span>.
+            automatiquement.
           </li>
         </ol>
       </section>

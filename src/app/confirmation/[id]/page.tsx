@@ -39,11 +39,11 @@ export default async function ConfirmationPage({
           </div>
           <div>
             <dt className="label">Signée le</dt>
-            <dd>{submission.signedAt ? new Date(submission.signedAt).toLocaleString("fr-FR") : "—"}</dd>
+            <dd>{submission.signedAt ? new Date(submission.signedAt).toLocaleString("fr-FR") : "-"}</dd>
           </div>
           <div>
             <dt className="label">Empreinte SHA-256</dt>
-            <dd className="font-mono text-[10px] break-all">{submission.pdfHash ?? "—"}</dd>
+            <dd className="font-mono text-[10px] break-all">{submission.pdfHash ?? "-"}</dd>
           </div>
         </dl>
 
@@ -58,9 +58,9 @@ export default async function ConfirmationPage({
 
         <p className="mt-10 text-xs text-[var(--muted)] leading-relaxed">
           Cette signature électronique simple a valeur probatoire (art. 1366-1367 du Code civil
-          français — règlement eIDAS). En cas de question, écrivez à{" "}
-          <a className="underline" href="mailto:om.lucenay@gmail.com">
-            om.lucenay@gmail.com
+          français · règlement eIDAS). En cas de question, écrivez à{" "}
+          <a className="underline" href="mailto:contact@sion-emergence.fr">
+            contact@sion-emergence.fr
           </a>
           .
         </p>

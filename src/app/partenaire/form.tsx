@@ -20,7 +20,7 @@ const variants: Array<{ id: PartnerVariant; title: string; subtitle: string }> =
   {
     id: "professional",
     title: "Professionnel",
-    subtitle: "Éducation, santé, social, culture — exercice individuel ou en structure.",
+    subtitle: "Éducation, santé, social, culture · exercice individuel ou en structure.",
   },
   {
     id: "economic",

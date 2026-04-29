@@ -20,13 +20,13 @@ export function AcademyPdf(props: {
   );
   return (
     <Document
-      title={`Sion Academy — Lettre d'intention — ${guardianName}`}
+      title={`Sion Academy · Lettre d'intention · ${guardianName}`}
       author="Sion Émergence"
     >
       <Page size="A4" style={styles.page}>
         <Header />
 
-        <Text style={styles.title}>Lettre d&apos;intention d&apos;inscription — Sion Academy</Text>
+        <Text style={styles.title}>Lettre d&apos;intention d&apos;inscription · Sion Academy</Text>
         <Text style={styles.subtitle}>
           École primaire hors contrat, non confessionnelle. Rentrée inaugurale : septembre 2026.
         </Text>
@@ -58,9 +58,9 @@ export function AcademyPdf(props: {
 
         <Text style={styles.section}>Déclaration d&apos;intention</Text>
         <Text style={styles.paragraph}>
-          Après avoir pris connaissance du projet Sion Academy — école primaire privée hors
+          Après avoir pris connaissance du projet Sion Academy · école primaire privée hors
           contrat et non confessionnelle, implantée au Lamentin, dont la rentrée inaugurale est
-          prévue en septembre 2026 — je déclare avoir l&apos;intention d&apos;inscrire le ou les
+          prévue en septembre 2026 · je déclare avoir l&apos;intention d&apos;inscrire le ou les
           enfants désignés ci-dessus.
         </Text>
         <Text style={styles.paragraph}>

@@ -66,7 +66,7 @@ export async function POST(
     signatureDataUri: parsed.data.signaturePng,
     signedAt: now.toISOString().slice(0, 16).replace("T", " "),
     ip,
-    hash: undefined, // hash is computed after — but the rendered file embeds hash field as undefined; acceptable
+    hash: undefined, // hash is computed after · but the rendered file embeds hash field as undefined; acceptable
   });
 
   const hash = crypto.createHash("sha256").update(pdf).digest("hex");
@@ -90,7 +90,7 @@ export async function POST(
 
   // Send emails
   const typeLabel = submissionTypeLabels[submission.type as SubmissionType];
-  const subject = `Lettre signée — ${typeLabel}`;
+  const subject = `Lettre signée · ${typeLabel}`;
   const recipientHtml = `
     <p>Bonjour ${parsed.data.signatureName},</p>
     <p>Vous trouverez ci-joint la lettre que vous venez de signer électroniquement.</p>
@@ -101,7 +101,7 @@ export async function POST(
       <li>Empreinte SHA-256 : <code>${hash}</code></li>
     </ul>
     <p>Une copie a été transmise à Sion Émergence.</p>
-    <p>— L'équipe Sion Émergence<br/>om.lucenay@gmail.com</p>
+    <p>- L'équipe Sion Émergence<br/>contact@sion-emergence.fr</p>
   `;
 
   const adminHtml = `
@@ -110,12 +110,12 @@ export async function POST(
       <li>Référence : <strong>${submission.id}</strong></li>
       <li>Document : ${typeLabel}</li>
       <li>Signataire : ${parsed.data.signatureName} (${submission.signerEmail})</li>
-      <li>Signée le : ${now.toISOString()} — IP ${ip}</li>
+      <li>Signée le : ${now.toISOString()} · IP ${ip}</li>
       <li>Empreinte SHA-256 : <code>${hash}</code></li>
     </ul>
   `;
 
-  const adminEmail = process.env.NOTIFICATION_EMAIL ?? "om.lucenay@gmail.com";
+  const adminEmail = process.env.NOTIFICATION_EMAIL ?? "contact@sion-emergence.fr";
 
   try {
     await Promise.all([
@@ -133,7 +133,7 @@ export async function POST(
       }),
       sendMail({
         to: adminEmail,
-        subject: `[Sion Émergence] ${typeLabel} — ${parsed.data.signatureName}`,
+        subject: `[Sion Émergence] ${typeLabel} · ${parsed.data.signatureName}`,
         html: adminHtml,
         attachments: [
           {
@@ -149,7 +149,7 @@ export async function POST(
       emailSentAt: new Date().toISOString(),
     });
   } catch (e) {
-    // Email send failure is non-fatal — submission is already marked signed
+    // Email send failure is non-fatal · submission is already marked signed
     console.error("[sign] email send failed:", e);
   }
 

@@ -33,7 +33,7 @@ export function Header() {
     <View>
       <Text style={styles.brand}>SION ÉMERGENCE</Text>
       <Text style={styles.brandSub}>
-        Tiers-lieu éducatif et communautaire — Le Lamentin, Martinique
+        Tiers-lieu éducatif et communautaire · Le Lamentin, Martinique
       </Text>
       <Text style={styles.brandFounders}>
         Représenté par Olivier-Marie LUCENAY et Karla LUCENAY, cofondateurs
@@ -90,7 +90,7 @@ export function MetaBox(props: {
   return (
     <View style={styles.metaBox}>
       <Text>
-        Signature électronique — Réf : {props.submissionId}
+        Signature électronique · Réf : {props.submissionId}
         {props.signedAt ? ` · Signée le ${props.signedAt}` : ""}
         {props.ip ? ` · IP ${props.ip}` : ""}
       </Text>
@@ -102,9 +102,9 @@ export function MetaBox(props: {
 export function Rgpd({ scope }: { scope: string }) {
   return (
     <Text style={styles.rgpd}>
-      RGPD — Données traitées par Sion Émergence aux seules fins de l&apos;instruction
+      RGPD · Données traitées par Sion Émergence aux seules fins de l&apos;instruction
       du {scope}. Aucune cession à des tiers. Droits d&apos;accès, rectification,
-      effacement, opposition : om.lucenay@gmail.com.
+      effacement, opposition : contact@sion-emergence.fr.
     </Text>
   );
 }

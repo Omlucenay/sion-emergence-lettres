@@ -54,7 +54,7 @@ export function AcademyForm() {
       try {
         parsed = JSON.parse(text);
       } catch {
-        // Non-JSON response — usually a 500 with HTML. Garde le brut.
+        // Non-JSON response · usually a 500 with HTML. Garde le brut.
       }
       if (!res.ok) {
         const msg =

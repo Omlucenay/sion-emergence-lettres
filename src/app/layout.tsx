@@ -10,9 +10,9 @@ const display = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Sion Émergence — Lettres d'intention",
+  title: "Sion Émergence · Lettres d'intention",
   description:
-    "Tiers-lieu éducatif et communautaire au Lamentin (Martinique) — Sion Academy, Joy Club & partenaires.",
+    "Tiers-lieu éducatif et communautaire au Lamentin (Martinique) · Sion Academy, Joy Club & partenaires.",
 };
 
 export default function RootLayout({

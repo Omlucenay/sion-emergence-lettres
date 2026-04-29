@@ -32,7 +32,7 @@ export const academyLevelSchema = z.enum(academyLevels, {
 });
 
 // ============================================================
-// Sion Academy — Lettre d'intention parents (école primaire)
+// Sion Academy · Lettre d'intention parents (école primaire)
 // ============================================================
 
 export const childAcademySchema = z.object({
@@ -61,7 +61,7 @@ export type AcademyData = z.infer<typeof academySchema>;
 export type AcademyLevel = z.infer<typeof academyLevelSchema>;
 
 // ============================================================
-// Joy Club — Lettre d'intention parents (périscolaire)
+// Joy Club · Lettre d'intention parents (périscolaire)
 // ============================================================
 
 export const childJoyClubSchema = z.object({
@@ -91,7 +91,7 @@ export const joyClubSchema = z.object({
 export type JoyClubData = z.infer<typeof joyClubSchema>;
 
 // ============================================================
-// Partenaire — 3 variantes
+// Partenaire · 3 variantes
 // ============================================================
 
 export const partnerVariantSchema = z.enum([
@@ -164,11 +164,11 @@ export type SubmissionType =
   | "partner_economic";
 
 export const submissionTypeLabels: Record<SubmissionType, string> = {
-  academy: "Sion Academy — Lettre d'intention parents",
-  joy_club: "Joy Club — Lettre d'intention parents",
-  partner_institutional: "Soutien partenaire — Institutionnel/associatif",
-  partner_professional: "Soutien partenaire — Professionnel",
-  partner_economic: "Soutien partenaire — Acteur économique",
+  academy: "Sion Academy · Lettre d'intention parents",
+  joy_club: "Joy Club · Lettre d'intention parents",
+  partner_institutional: "Soutien partenaire · Institutionnel/associatif",
+  partner_professional: "Soutien partenaire · Professionnel",
+  partner_economic: "Soutien partenaire · Acteur économique",
 };
 
 // ============================================================

@@ -72,7 +72,7 @@ export function SignatureClient({
         <p>
           En validant, vous reconnaissez avoir lu et approuvé le contenu de la lettre. Votre
           signature, l&apos;horodatage, votre adresse IP et l&apos;empreinte SHA-256 du document
-          seront enregistrés à des fins probatoires (art. 1366-1367 Code civil — règlement
+          seront enregistrés à des fins probatoires (art. 1366-1367 Code civil · règlement
           eIDAS, signature simple).
         </p>
       </div>

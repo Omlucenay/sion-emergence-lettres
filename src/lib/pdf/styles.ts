@@ -1,6 +1,6 @@
 import { StyleSheet, Font } from "@react-pdf/renderer";
 
-// On utilise les fontes par défaut (Helvetica) — pas de téléchargement réseau requis.
+// On utilise les fontes par défaut (Helvetica) · pas de téléchargement réseau requis.
 // Pour passer à une fonte personnalisée plus tard : Font.register({ family: 'Inter', src: '...' })
 
 export const palette = {

@@ -1,7 +1,7 @@
 import { SiteFrame } from "@/components/site-frame";
 import { JoyClubForm } from "./form";
 
-export const metadata = { title: "Joy Club — Sion Émergence" };
+export const metadata = { title: "Joy Club · Sion Émergence" };
 
 export default function JoyClubPage() {
   return (
@@ -11,7 +11,7 @@ export default function JoyClubPage() {
           Périscolaire & loisirs · Ouverture septembre 2026
         </p>
         <h1 className="font-display text-4xl md:text-5xl mb-4">
-          Lettre d&apos;intention — Joy Club
+          Lettre d&apos;intention · Joy Club
         </h1>
         <p className="text-[var(--muted)] leading-relaxed mb-12">
           Centre aéré (vacances), garderie du mercredi et soutien scolaire. Cochez les services

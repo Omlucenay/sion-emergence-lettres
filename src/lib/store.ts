@@ -1,4 +1,4 @@
-// store.ts — stockage minimaliste des soumissions sur le système de fichiers.
+// store.ts · stockage minimaliste des soumissions sur le système de fichiers.
 // Une soumission = un fichier JSON dans storage/submissions/<id>.json.
 // Évite la dépendance à Prisma/MySQL qui pose des problèmes sur o2switch.
 

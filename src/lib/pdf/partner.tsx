@@ -4,9 +4,9 @@ import { Header, SignatureBlock, MetaBox, Rgpd } from "./components";
 import { fullName, type PartnerData } from "../schemas";
 
 const variantTitle: Record<PartnerData["variant"], string> = {
-  institutional: "Variante 1 — Partenaire institutionnel ou associatif",
-  professional: "Variante 2 — Professionnel (éducation, santé, social, culture)",
-  economic: "Variante 3 — Acteur économique, producteur local, artisan",
+  institutional: "Variante 1 · Partenaire institutionnel ou associatif",
+  professional: "Variante 2 · Professionnel (éducation, santé, social, culture)",
+  economic: "Variante 3 · Acteur économique, producteur local, artisan",
 };
 
 const objet: Record<PartnerData["variant"], string> = {
@@ -27,7 +27,7 @@ export function PartnerPdf(props: {
   const signerName = fullName(data.signerFirstName, data.signerLastName);
   return (
     <Document
-      title={`Lettre de soutien — ${data.organizationName}`}
+      title={`Lettre de soutien · ${data.organizationName}`}
       author="Sion Émergence"
     >
       <Page size="A4" style={styles.page}>
@@ -60,7 +60,7 @@ export function PartnerPdf(props: {
         <View style={{ marginTop: 18 }}>
           <Text>{signerName}</Text>
           <Text style={{ fontSize: 9, color: "#5C5C5C" }}>
-            {data.signerRole} — {data.organizationName}
+            {data.signerRole} · {data.organizationName}
           </Text>
         </View>
 
@@ -114,8 +114,8 @@ function PartnerBody({ data }: { data: PartnerData }) {
         </Text>
         <Text style={styles.paragraph}>
           Dans ma pratique, je constate {data.observation}. La démarche portée par Sion
-          Émergence — pédagogie Freinet et Design for Change, excellence caribéenne, tiers-lieu
-          intégré — me paraît particulièrement pertinente.
+          Émergence · pédagogie Freinet et Design for Change, excellence caribéenne, tiers-lieu
+          intégré · me paraît particulièrement pertinente.
         </Text>
         <Text style={styles.paragraph}>
           J&apos;apporte mon soutien au projet et me tiens disponible pour {data.availability}.

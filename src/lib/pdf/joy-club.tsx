@@ -20,13 +20,13 @@ export function JoyClubPdf(props: {
   );
   return (
     <Document
-      title={`Joy Club — Lettre d'intention — ${guardianName}`}
+      title={`Joy Club · Lettre d'intention · ${guardianName}`}
       author="Sion Émergence"
     >
       <Page size="A4" style={styles.page}>
         <Header />
 
-        <Text style={styles.title}>Lettre d&apos;intention d&apos;inscription — Joy Club</Text>
+        <Text style={styles.title}>Lettre d&apos;intention d&apos;inscription · Joy Club</Text>
         <Text style={styles.subtitle}>
           Pôle périscolaire et loisirs du tiers-lieu Sion Émergence. Ouverture prévue :
           septembre 2026.
@@ -72,8 +72,8 @@ export function JoyClubPdf(props: {
         <Text style={styles.section}>Déclaration d&apos;intention</Text>
         <Text style={styles.paragraph}>
           Après avoir pris connaissance de l&apos;offre périscolaire et de loisirs portée par
-          Joy Club — pôle du tiers-lieu Sion Émergence regroupant centre aéré, garderie du
-          mercredi et soutien scolaire — je déclare avoir l&apos;intention d&apos;inscrire le ou
+          Joy Club · pôle du tiers-lieu Sion Émergence regroupant centre aéré, garderie du
+          mercredi et soutien scolaire · je déclare avoir l&apos;intention d&apos;inscrire le ou
           les enfants désignés ci-dessus aux services cochés.
         </Text>
         <Text style={styles.paragraph}>

@@ -23,8 +23,8 @@ export async function sendMail(opts: {
   attachments?: Array<{ filename: string; content: Buffer; contentType?: string }>;
 }) {
   if (!transporter) {
-    // Dev local — log dans la console au lieu d'envoyer
-    console.log("\n[EMAIL — mode dev, non envoyé]");
+    // Dev local · log dans la console au lieu d'envoyer
+    console.log("\n[EMAIL · mode dev, non envoyé]");
     console.log("À:", opts.to);
     console.log("Sujet:", opts.subject);
     console.log("---");

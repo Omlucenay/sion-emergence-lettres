@@ -81,7 +81,7 @@ export default async function AdminPage({
                       data.signerFirstName as string | undefined,
                       data.signerLastName as string | undefined,
                     ) ||
-                    "—");
+                    "-");
                 return (
                   <tr key={s.id} className="border-b border-[#F1ECE3] last:border-0">
                     <td className="py-3 pr-4 whitespace-nowrap text-[var(--muted)]">
@@ -108,7 +108,7 @@ export default async function AdminPage({
                           Télécharger PDF
                         </a>
                       ) : (
-                        <span className="text-xs text-[var(--muted)]">—</span>
+                        <span className="text-xs text-[var(--muted)]">-</span>
                       )}
                     </td>
                   </tr>

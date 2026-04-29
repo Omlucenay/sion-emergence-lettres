@@ -9,7 +9,7 @@ import type {
 
 export const dynamic = "force-dynamic";
 
-// Colonnes du CSV — pensées pour filtrer / trier dans Excel ou Google Sheets.
+// Colonnes du CSV · pensées pour filtrer / trier dans Excel ou Google Sheets.
 const HEADERS = [
   "id",
   "createdAt",
@@ -32,7 +32,7 @@ const HEADERS = [
   "partnerProfession",
   "partnerActivity",
   "partnerTerritory",
-  // Enfants : 1 ligne par enfant — répété pour chaque enfant via colonnes child1_… child2_…
+  // Enfants : 1 ligne par enfant · répété pour chaque enfant via colonnes child1_… child2_…
   "childCount",
   "child1_firstName",
   "child1_lastName",

@@ -139,7 +139,7 @@ export function ConsentBlock({
         <span className="text-sm leading-relaxed">
           J&apos;accepte que mes données soient traitées par Sion Émergence aux seules fins de
           l&apos;instruction du projet. Aucune cession à des tiers.{" "}
-          <a className="underline" href="mailto:om.lucenay@gmail.com">
+          <a className="underline" href="mailto:contact@sion-emergence.fr">
             Droits d&apos;accès, rectification, effacement.
           </a>
         </span>

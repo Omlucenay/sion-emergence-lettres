@@ -1,7 +1,7 @@
 import { SiteFrame } from "@/components/site-frame";
 import { PartnerForm } from "./form";
 
-export const metadata = { title: "Lettre de soutien — Sion Émergence" };
+export const metadata = { title: "Lettre de soutien · Sion Émergence" };
 
 export default function PartenairePage() {
   return (

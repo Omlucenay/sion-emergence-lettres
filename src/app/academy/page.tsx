@@ -1,7 +1,7 @@
 import { SiteFrame } from "@/components/site-frame";
 import { AcademyForm } from "./form";
 
-export const metadata = { title: "Sion Academy — Sion Émergence" };
+export const metadata = { title: "Sion Academy · Sion Émergence" };
 
 export default function AcademyPage() {
   return (
@@ -11,7 +11,7 @@ export default function AcademyPage() {
           École primaire hors contrat · Rentrée septembre 2026
         </p>
         <h1 className="font-display text-4xl md:text-5xl mb-4">
-          Lettre d&apos;intention — Sion Academy
+          Lettre d&apos;intention · Sion Academy
         </h1>
         <p className="text-[var(--muted)] leading-relaxed mb-12">
           Manifestez votre intérêt pour inscrire votre enfant à Sion Academy. Cette lettre est
