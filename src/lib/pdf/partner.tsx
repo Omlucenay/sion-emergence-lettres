@@ -4,9 +4,9 @@ import { Header, SignatureBlock, MetaBox, Rgpd } from "./components";
 import { fullName, type PartnerData } from "../schemas";
 
 const variantTitle: Record<PartnerData["variant"], string> = {
-  institutional: "Variante 1 · Partenaire institutionnel ou associatif",
-  professional: "Variante 2 · Professionnel (éducation, santé, social, culture)",
-  economic: "Variante 3 · Acteur économique, producteur local, artisan",
+  institutional: "Partenaire institutionnel ou associatif",
+  professional: "Professionnel · éducation, santé, social, culture",
+  economic: "Acteur économique, producteur local, artisan",
 };
 
 const objet: Record<PartnerData["variant"], string> = {

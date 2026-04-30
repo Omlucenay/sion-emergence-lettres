@@ -33,7 +33,7 @@ export function Header() {
     <View>
       <Text style={styles.brand}>SION ÉMERGENCE</Text>
       <Text style={styles.brandSub}>
-        Tiers-lieu éducatif et communautaire · Le Lamentin, Martinique
+        Tiers-lieu éducatif et communautaire · Martinique
       </Text>
       <Text style={styles.brandFounders}>
         Représenté par Olivier-Marie LUCENAY et Karla LUCENAY, cofondateurs
