@@ -33,11 +33,8 @@ export function PartnerPdf(props: {
       <Page size="A4" style={styles.page}>
         <Header />
 
-        <Text style={[styles.subtitle, { fontFamily: "Helvetica-Bold", marginBottom: 4 }]}>
+        <Text style={[styles.subtitle, { fontFamily: "Helvetica-Bold", marginBottom: 16 }]}>
           {variantTitle[data.variant]}
-        </Text>
-        <Text style={[styles.subtitle, { marginBottom: 16 }]}>
-          [En-tête du signataire]
         </Text>
 
         <Text style={{ marginBottom: 16 }}>
