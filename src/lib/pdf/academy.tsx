@@ -1,7 +1,7 @@
 import { Document, Page, View, Text } from "@react-pdf/renderer";
 import { styles } from "./styles";
-import { Header, Field, SignatureBlock, MetaBox, Rgpd } from "./components";
-import { fullName, formatAddress, type AcademyData } from "../schemas";
+import { Header, Field, SignatureBlock, Rgpd } from "./components";
+import { fullName, formatAddress, formatDateFr, type AcademyData } from "../schemas";
 
 export function AcademyPdf(props: {
   data: AcademyData;
@@ -28,7 +28,7 @@ export function AcademyPdf(props: {
 
         <Text style={styles.title}>Lettre d&apos;intention d&apos;inscription · Sion Academy</Text>
         <Text style={styles.subtitle}>
-          École primaire hors contrat, non confessionnelle. Rentrée inaugurale : septembre 2026.
+          École primaire hors contrat, non confessionnelle. Rentrée inaugurale : septembre 2027.
         </Text>
 
         <Text style={styles.section}>Responsable(s) légal(aux)</Text>
@@ -49,7 +49,7 @@ export function AcademyPdf(props: {
             return (
               <View key={i} style={isLast ? styles.trLast : styles.tr}>
                 <Text style={styles.td}>{fullName(c.firstName, c.lastName)}</Text>
-                <Text style={styles.td}>{c.birthDate}</Text>
+                <Text style={styles.td}>{formatDateFr(c.birthDate)}</Text>
                 <Text style={[styles.td, { borderRightWidth: 0 }]}>{c.level}</Text>
               </View>
             );
@@ -60,7 +60,7 @@ export function AcademyPdf(props: {
         <Text style={styles.paragraph}>
           Après avoir pris connaissance du projet Sion Academy · école primaire privée hors
           contrat et non confessionnelle, implantée au Lamentin, dont la rentrée inaugurale est
-          prévue en septembre 2026 · je déclare avoir l&apos;intention d&apos;inscrire le ou les
+          prévue en septembre 2027 · je déclare avoir l&apos;intention d&apos;inscrire le ou les
           enfants désignés ci-dessus.
         </Text>
         <Text style={styles.paragraph}>
@@ -71,16 +71,9 @@ export function AcademyPdf(props: {
 
         <SignatureBlock
           city={data.city}
-          date={data.signedDate}
+          date={formatDateFr(data.signedDate)}
           signerName={guardianName}
           signatureSvgDataUri={props.signatureDataUri}
-        />
-
-        <MetaBox
-          submissionId={props.submissionId}
-          signedAt={props.signedAt}
-          ip={props.ip}
-          hash={props.hash}
         />
 
         <Rgpd scope="projet d'école" />

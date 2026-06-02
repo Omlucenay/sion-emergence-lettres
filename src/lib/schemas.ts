@@ -193,3 +193,13 @@ export function fullName(firstName?: string, lastName?: string) {
 export function formatAddress(street?: string, postalCode?: string, city?: string) {
   return [street, [postalCode, city].filter(Boolean).join(" ")].filter(Boolean).join(", ");
 }
+
+/** Converts YYYY-MM-DD (or YYYY-MM-DD HH:MM) to DD/MM/YYYY (or DD/MM/YYYY HH:MM) */
+export function formatDateFr(isoDate?: string): string {
+  if (!isoDate) return "";
+  const [datePart, timePart] = isoDate.split(" ");
+  const parts = datePart.split("-");
+  if (parts.length !== 3) return isoDate;
+  const formatted = `${parts[2]}/${parts[1]}/${parts[0]}`;
+  return timePart ? `${formatted} ${timePart}` : formatted;
+}
