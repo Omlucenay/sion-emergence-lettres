@@ -6,6 +6,7 @@ import path from "node:path";
 import { submissionStore } from "@/lib/store";
 import { renderSubmissionPdf } from "@/lib/pdf/render";
 import { sendMail } from "@/lib/email";
+import { pushToNotion } from "@/lib/notion";
 import type {
   AcademyData,
   JoyClubData,
@@ -117,6 +118,19 @@ export async function POST(
 
   const adminEmail = process.env.NOTIFICATION_EMAIL ?? "contact@sion-emergence.fr";
 
+  // Push vers Notion (non-bloquant)
+  const publicUrl = process.env.PUBLIC_URL ?? "https://intentions.sion-emergence.fr";
+  pushToNotion({
+    signataire: parsed.data.signatureName,
+    email: submission.signerEmail,
+    type: submission.type,
+    statut: "signed",
+    dateSubmission: submission.createdAt,
+    dateSignature: now.toISOString(),
+    reference: submission.id,
+    lienPdf: `${publicUrl}/api/pdf/${submission.id}`,
+  }).catch((e) => console.error("[notion] push failed:", e));
+
   try {
     await Promise.all([
       sendMail({
@@ -147,10 +161,15 @@ export async function POST(
     await submissionStore.update(submission.id, {
       status: "sent",
       emailSentAt: new Date().toISOString(),
+      emailError: null,
     });
   } catch (e) {
     // Email send failure is non-fatal · submission is already marked signed
-    console.error("[sign] email send failed:", e);
+    const errMsg = e instanceof Error ? `${e.message}` : String(e);
+    console.error("[sign] email send failed:", errMsg);
+    await submissionStore.update(submission.id, {
+      emailError: errMsg,
+    });
   }
 
   return NextResponse.json({ ok: true, hash });

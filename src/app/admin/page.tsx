@@ -96,6 +96,11 @@ export default async function AdminPage({
                     <td className="py-3 pr-4 text-[var(--muted)]">{s.signerEmail}</td>
                     <td className="py-3 pr-4">
                       <StatusPill status={s.status} />
+                      {s.emailError && (
+                        <div className="text-[10px] text-red-500 mt-1 max-w-[180px] truncate" title={s.emailError}>
+                          ✗ {s.emailError}
+                        </div>
+                      )}
                     </td>
                     <td className="py-3 text-right">
                       {s.status !== "pending" ? (

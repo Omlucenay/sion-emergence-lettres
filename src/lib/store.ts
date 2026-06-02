@@ -22,6 +22,8 @@ export type SubmissionRow = {
   acceptTerms: boolean;
   signerEmail: string;
   emailSentAt?: string | null;
+  emailError?: string | null;
+  notionPageId?: string | null;
   createdAt: string;
   updatedAt: string;
 };
